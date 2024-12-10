@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Romantic Message</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+    .background-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+      z-index: 2;
+    }
+    .message {
+      color: black;
+      font-weight: bold;
+      font-size: 2rem;
+      text-align: center;
+      max-width: 600px;
+      padding: 1rem;
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    .message.hidden {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .message.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .footer {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      color: white;
+      opacity: 0.7;
+      font-size: 0.9rem;
+      z-index: 3;
+    }
+  </style>
+</head>
+<body>
+  <img 
+    src="https://media.gettyimages.com/id/640985534/photo/pastel-colour-heart-shape-bouquet.jpg?s=612x612&w=0&k=20&c=ZBhETVCKKZSAGLKqj8qAaOAh66kKWzyT2UyzGmc8WPk=" 
+    alt="Pastel colour heart shape bouquet" 
+    class="background-image"
+  />
+  <div class="overlay">
+    <div id="message" class="message visible">
+      Priyu ❤️...
+    </div>
+  </div>
+  <div class="footer">For Priyu ❤️</div>
+
+  <script>
+    const lines = [
+      "Priyu ❤️...",
+      "Tum na bahut cutie ho🥺❤️...",
+      "aaj paper bahut acha gya bss tumse vc hogya🥺❤️...",
+      "tumhare liye hoga bahut kuch haso mt 🥺...",
+      "jo cheez humko perfectly aati h uska use krke bhi tumko khus rkhnge🥺...",
+      "ye dil hai na tere liye hi hai pakaa...",
+      "kahi aur nhi jyega promise..",
+      "hrr baar hum nye tarike nikalenge tumse ishq ladane ke ...",
+      "dubara hasaynge ache se sb hoga❤️...",
+      "only yours forever💖...",
+      "Effort never dies..."
+    ];
+    
+    let currentLine = 0;
+    const messageElement = document.getElementById('message');
+
+    setInterval(() => {
+      // Fade out the current message
+      messageElement.classList.remove('visible');
+      messageElement.classList.add('hidden');
+
+      setTimeout(() => {
+        // Change the message and fade in
+        currentLine = (currentLine + 1) % lines.length;
+        messageElement.textContent = lines[currentLine];
+        messageElement.classList.remove('hidden');
+        messageElement.classList.add('visible');
+      }, 1000); // Wait for fade-out transition
+    }, 5000); // Change every 5 seconds
+  </script>
+</body>
+</html>
